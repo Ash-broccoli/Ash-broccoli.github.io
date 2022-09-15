@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+<title>FrogHat HQ</title>
+</head>
+<body>
+    
+      
+<div class="header">
+    
+  <h1>Welcome to my page!</h1>
+
+      <div class="parallax"></div>
+  <h3>ʚɞ Please enjoy your stay ʚɞ</h3>
+  
+</div>
+
+<div class="nav-wrapper nav-wrapper-4">
+    <nav class="effect-4">
+        <ul>
+            <li><a href="#watchlist">watchlist</a></li>
+            <li><a href="">About me</a></li>
+            <li><a href="">Portfolio</a></li>
+            <li><a href="">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="row">
+  <div class="leftcolumn">
+
+    <div id="watchlist" class="card">
+      <h2>Anime Watchlist</h2>
+        <br>
+        <a href="https://github.com/Ash-broccoli/Watchlist.git" target="_blank"  class="button one">Watchlist repository</a>
+        <p>This wasn't made willingly. It was for school. I still like the results :)</p>
+    </div>
+
+    <div class="card">
+    </div>
+
+    <div class="card">
+      
+    </div>
+      <div class="card">
+
+      </div>
+      <div class="card">
+
+      </div>
+      <div id="contact" class="card">
+        <h2>Contact me</h2>
+          <p>Please don't</p>
+      </div>
+
+   
+  </div>
+
+  <div class="rightcolumn">
+    
+
+    <div class="card">
+        <h2>ʚɞ Frog Gallery</h2> 
+     
+      <div class="gallery">
+        <img src="https://i.pinimg.com/originals/ce/09/16/ce09160b7b12254f957ae46f8cd89ba6.jpg" id="frogImage1" width="49%" height="170">
+        <img src="https://i.pinimg.com/564x/a4/5e/4d/a45e4d44aa4c0e8b6f47a748104f8734.jpg" id="frogImage2" width="49%" height="170">
+      </div>
+      <div class="gallery">
+
+      </div>
+      <div class="gallery">
+
+          <img src="https://i.pinimg.com/originals/e8/28/60/e8286019556b6efd38145197bfe39fbf.jpg" id="frogImage3" width="99%" height="auto">
+      </div>
+      <div class="gallery">
+
+          <img src="https://i.pinimg.com/736x/0f/cf/42/0fcf420e7ddd8aafc3755b42ac1eba4f.jpg" id="frogImage4" width="65%" height="159">
+          <img src="https://i.pinimg.com/originals/34/57/8a/34578ad77870d2961c4b29628b3f03d3.png" id="frogImage5" width="33%" height="159">
+      </div>
+      <button onclick="changeGal()">Switch images</button>
+    </div>
+
+    <div class="card">
+        <h2>ʚɞ Recommended Playlist</h2>
+        <iframe src="https://open.spotify.com/embed/playlist/50DeSZFG6BsuzlJzMUV2VA?theme=0"  width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+
+    <div class="card">
+        <h2>ʚɞ Frog facts</h2>
+            <h3 id="facts">Press for a frog fact</h3>
+      <button onclick="frogFact()">Random frog fact</button>
+     </div>
+  </div>
+    </div>
+
+<div class="footer">
+  <h2>&hearts; Make sure to drink enough water &hearts;</h2>
+</div>
+
+
+<script>
+
+    let imgToggle = true;
+    function changeGal() {
+        
+        if(imgToggle){
+            document.getElementById('frogImage1').src = "https://i.pinimg.com/originals/4f/6f/84/4f6f8438232d510e51e9f3f81ef265fb.jpg";
+            document.getElementById('frogImage2').src = "https://i.pinimg.com/originals/a3/89/69/a389694daa51e5ddf5c808ff34032e23.jpg";
+            document.getElementById('frogImage3').src = "https://i.pinimg.com/originals/c0/1a/93/c01a932a8704e384996f35bc8c1a9cb2.png";
+            document.getElementById('frogImage4').src = "https://i.pinimg.com/736x/ea/64/9b/ea649b4a5df90225dddc69550b9ef57b.jpg";
+            document.getElementById('frogImage5').src = "https://i.pinimg.com/originals/98/97/7a/98977afb04d7f5e2113043a726b1b443.png";
+            imgToggle = !imgToggle;
+        }else{
+            document.getElementById('frogImage1').src = "https://i.pinimg.com/originals/ce/09/16/ce09160b7b12254f957ae46f8cd89ba6.jpg";
+            document.getElementById('frogImage2').src = "https://i.pinimg.com/564x/a4/5e/4d/a45e4d44aa4c0e8b6f47a748104f8734.jpg";
+            document.getElementById('frogImage3').src = "https://i.pinimg.com/originals/e8/28/60/e8286019556b6efd38145197bfe39fbf.jpg";
+            document.getElementById('frogImage4').src = "https://i.pinimg.com/736x/0f/cf/42/0fcf420e7ddd8aafc3755b42ac1eba4f.jpg";
+            document.getElementById('frogImage5').src = "https://i.pinimg.com/originals/34/57/8a/34578ad77870d2961c4b29628b3f03d3.png";
+            imgToggle = !imgToggle;
+        }
+        }
+
+        function frogFact(){
+            var facts  = ["There is evidence that frogs have roamed the Earth for more than 200 million years, at least as long as the dinosaurs", 
+                        "The world's largest frog is the goliath frog of West Africa—it can grow to 15 inches and weigh up to 7 pounds. A goliath frog skeleton is featured in Frogs: A Chorus of Colors.",
+                        "One of the smallest is the Cuban tree toad, which grows to half an inch long.",
+                        "While the life spans of frogs in the wild are unknown, frogs in captivity have been known to live more than 20 years.",
+                        "There are over 6,000 species of frogs worldwide. Scientists continue to search for new ones.",
+                        "Toads are frogs. The word \"toad\" is usually used for frogs that have warty and dry skin, as well as shorter hind legs.",
+                        "Launched by their long legs, many frogs can leap more than 20 times their body length.",
+                        "The Costa Rican flying tree frog soars from branch to branch with the help of its feet. Webbing between the frog's fingers and toes extends out, helping the frog glide.",
+                        "To blend into the environment, the Budgett's frog is muddy brown in color, while the Vietnamese mossy frog has spotty skin and bumps to make them look like little clumps of moss or lichen.",
+                        "Like all amphibians, frogs are cold-blooded, meaning their body temperatures change with the temperature of their surroundings. When temperatures drop, some frogs dig burrows underground or in the mud at the bottom of ponds. They hibernate in these burrows until spring, completely still and scarcely breathing.",
+    ]
+            var randomFact = facts[Math.floor(Math.random() * facts.length)]
+                       document.getElementById("facts").innerHTML = randomFact;
+        }
+        
+    </script>
+</body>
+</html>

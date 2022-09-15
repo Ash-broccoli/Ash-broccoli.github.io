@@ -1,0 +1,265 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif ;
+  padding: 10px;
+  background: rgb(51, 83, 56);
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: rgb(97, 144, 100);
+}
+
+.header h1 {
+  font-size: 50px;
+  color: white;
+}
+
+h2{
+  border-bottom:1px solid #CCC;
+  padding-bottom:3px;
+}
+
+.header h3{
+  color: white;
+}
+
+/* Style the top navigation bar */
+.nav-wrapper {
+  width: 100%;
+  padding: 50px 0 70px;
+}
+
+nav {
+  position: relative;
+}
+
+ul {
+  list-style-type: none;
+  float: left;
+  left: 50%;
+  position: relative;
+}
+
+li {
+  margin: 0 30px;
+  float: left;
+  left: -50%;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.effect-4 a:before {
+  content: "[";
+  left: -5px;
+}
+
+.effect-4 a:after {
+  content: "]";
+  right: -5px;
+}
+
+.effect-4 a:before,
+.effect-4 a:after {
+  position: absolute;
+  opacity: 0;
+  color: #fff;
+  top: -1px;
+  transition: all .5s;
+}
+
+.effect-4 a:hover:before,
+.effect-4 a:hover:after {
+  opacity: 0.7;
+}
+
+.effect-4 a:hover:before {
+  left: -20px;
+}
+
+.effect-4 a:hover:after {
+  right: -20px;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+.leftcolumn h2{
+  color: white;
+}
+
+.leftcolumn p{
+  color: white;
+}
+
+input{
+  transition: 0.8s;
+  border-style: solid;
+  border-width: 4px;
+  border-color: rgb(43, 43, 43);
+  color: rgb(0, 0, 0);
+  background-color: lightgray;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+  font-size: 16px;
+  border-radius: 8px;
+  
+}
+div{
+  border-radius: 6px;
+}
+
+
+input:hover {
+  background-color: #000000;
+  color: lightgray;
+  border-radius: 50px;
+  transition: 0.8s;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: rgb(69, 104, 71);
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #56a376;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: rgb(86, 162, 118);
+  padding: 20px;
+  margin-top: 20px;
+  margin-right: 20px;;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: rgb(97, 144, 100);
+  margin-top: 20px;
+}
+.footer h2{
+  color: white;
+  border-bottom:none;
+}
+.rightcolumn h2{
+  color: white;
+}
+.rightcolumn h3{
+  color: white;
+}
+
+.rightcolumn p{
+  color: white;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+.gallery{
+  border-style: solid;
+  border-width: 0px;
+  transition: 0.8s;
+}
+
+#facts{
+  height: 200px;
+}
+
+button{
+  background-color: rgb(65, 231, 110);
+  border: none; 
+  border-radius: 5px; 
+  color: #333; /* Dark grey */ 
+  padding: 15px 32px;
+  width: 100%;
+  transition: 0.5s;
+}
+button:hover{
+  cursor: pointer;
+  background-color: #333;
+  color: rgb(65, 231, 110);
+  transition: 0.5s;
+}
+
+.button{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+  padding: 10px;
+}
+
+a.button.one:before, a.button.one:after{
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  transition: all 0.3s ease;
+}
+a.button.one:before{
+  top: -2.5%;
+  left: -1%;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+}
+a.button.one:after{
+  bottom: -2.5%;
+  right: -1%;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+}
+a.button.one:hover:before, a.button.one:hover:after{
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+/*Navbar*/
+
