@@ -3,115 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Your Name, Artist</title>
+<title>Alyssa Heimlicher, Artist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#eef0df;--panel:#ffffff;--ink:#12140a;--muted:#565a38;
-  --amber:#a65f00;--ice:#5d6b14;--line:#12140a;
-  --disp:'Syne','Arial Black',system-ui,sans-serif;
-  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#12140a;--panel:#232a12;--ink:#ece6d6;--muted:#b3b08f;
-    --amber:#ffb23e;--ice:#c9d36a;--line:#ece6d6;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#12140a;--panel:#232a12;--ink:#ece6d6;--muted:#b3b08f;
-  --amber:#ffb23e;--ice:#c9d36a;--line:#ece6d6;
-}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-*,*::before,*::after{box-sizing:inherit}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.65 var(--body)}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
-h1,h2,h3{font-family:var(--disp);font-weight:800;margin:0;line-height:1.05}
-p{margin:0}
-section{padding:80px 0}
-h2{font-size:clamp(30px,5vw,48px);margin-bottom:12px}
-.lead{color:var(--muted);max-width:50ch;margin-bottom:36px}
-
-/* hero: always dark, lit by the pointer */
-.hero{position:relative;overflow:hidden;min-height:92vh;color:#ece6d6;
-  background:radial-gradient(110% 90% at 72% 35%,#3a4318 0,#1d220d 55%,#0b0d05 100%);
-  --x:70%;--y:42%}
-.hero .art{position:absolute;right:-6%;top:14%;width:min(78vw,760px);height:auto}
-.hero .shade{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(circle 150px at var(--x) var(--y),rgba(255,178,62,.22) 0,rgba(255,178,62,0) 100%),
-  radial-gradient(circle 260px at var(--x) var(--y),rgba(8,9,3,0) 0,rgba(8,9,3,.6) 55%,rgba(8,9,3,.92) 100%)}
-.top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font:600 15px var(--body)}
-.top nav{display:flex;gap:22px;flex-wrap:wrap}
-.top a{text-decoration:none}
-.top a:hover{color:#ffb23e}
-.heroText{position:relative;z-index:2;padding:12vh 0 9vh;max-width:620px}
-.name{font-size:clamp(54px,12vw,132px);letter-spacing:-.03em;position:relative;display:inline-block}
-.name::before,.name::after{content:attr(data-t);position:absolute;inset:0;mix-blend-mode:screen;pointer-events:none}
-.name::before{color:#ffb23e;transform:translate(-5px,3px)}
-.name::after{color:#8fa83a;transform:translate(5px,-3px)}
-.role{margin-top:30px;font-size:21px;max-width:27ch;color:#e8e4cf}
-.cta{display:inline-block;margin-top:30px;padding:13px 22px;font:600 16px var(--body);text-decoration:none;background:#ffb23e;color:#12140a;border-radius:2px;box-shadow:5px 5px 0 #8fa83a}
-.cta:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 #8fa83a}
-.hint{position:absolute;z-index:2;left:22px;bottom:18px;font-size:14px;color:#c3c09f}
-
-/* wireframe reveal */
-.rev{position:relative;aspect-ratio:16/9;overflow:hidden;--w:50%;cursor:ew-resize;touch-action:pan-y;
-  background:linear-gradient(160deg,#232a12,#12140a);border-radius:3px;user-select:none}
-.rev svg{position:absolute;inset:0;width:100%;height:100%}
-.wire{background:#12140a;clip-path:inset(0 calc(100% - var(--w)) 0 0)}
-.wire polygon{fill:none;stroke:#c9d36a;stroke-width:1.6;stroke-linejoin:round}
-.wire .grid{stroke:#c9d36a;stroke-width:.4;opacity:.25}
-.rev .split{position:absolute;top:0;bottom:0;left:var(--w);width:3px;background:#ffb23e;transform:translateX(-1px)}
-.rev .tag{position:absolute;bottom:12px;font:600 13px var(--body);color:#ece6d6;background:rgba(18,20,10,.8);padding:3px 9px;border-radius:2px}
-.rev .t1{left:12px}.rev .t2{right:12px}
-.f1{fill:#6b7a2a}.f2{fill:#4a5620}.f3{fill:#2c3414}.f4{fill:#3d4a1c}.f5{fill:#8c9a3a}.f6{fill:#c98a2e}
-.cap{margin-top:14px;color:var(--muted);max-width:60ch}
-
-/* sketch desk */
-.desk{position:relative;height:520px;overflow:hidden;border-radius:3px;background:var(--panel);
-  background-image:radial-gradient(color-mix(in srgb,var(--ink) 18%,transparent) 1.2px,transparent 1.5px);background-size:22px 22px}
-.card{position:absolute;width:190px;padding:10px 10px 8px;background:#ece6d6;color:#12140a;transform:rotate(var(--r));
-  box-shadow:3px 4px 0 rgba(0,0,0,.35);cursor:grab;touch-action:none;user-select:none;font:600 14px var(--body)}
-.card.drag{cursor:grabbing;box-shadow:8px 10px 0 rgba(0,0,0,.35)}
-.card i{display:block;height:140px;margin-bottom:6px;background:#d9d1bd}
-.d1 i{background:repeating-linear-gradient(125deg,#d9d1bd 0 6px,#12140a 6px 7px)}
-.d2 i{background:radial-gradient(circle at 50% 50%,#12140a 0 28%,transparent 29%),repeating-linear-gradient(0deg,#d9d1bd 0 8px,#b3b08f 8px 9px)}
-.d3 i{background:radial-gradient(#12140a 1.4px,transparent 1.7px) 0 0/8px 8px,#d9d1bd}
-.d4 i{background:conic-gradient(from 20deg,#12140a 0 25%,#d9d1bd 0 50%,#12140a 0 75%,#d9d1bd 0)}
-.d5 i{background:repeating-linear-gradient(80deg,#d9d1bd 0 10px,#3a4318 10px 12px)}
-
-/* tiles */
-.tiles{display:grid;grid-template-columns:1fr 1fr;gap:40px 32px}
-.tile{display:block;text-decoration:none}
-.plate{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:3px;transition:transform .15s}
-.tile:hover .plate,.tile:focus-visible .plate{transform:translateY(-6px) rotate(-.6deg)}
-.plate::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(125deg,transparent 0 6px,rgba(236,230,214,.14) 6px 7px)}
-.p2{background:radial-gradient(circle at 68% 32%,#ffb23e 0 14%,transparent 15%),linear-gradient(180deg,#3d4a1c,#12140a)}
-.p4{background:radial-gradient(ellipse at 50% 50%,rgba(255,178,62,.5),transparent 55%),repeating-linear-gradient(90deg,#3a4318 0 16px,#232a12 16px 32px)}
-.tile h3{font-size:26px;margin:16px 0 6px}
-.tile p{color:var(--muted);max-width:40ch}
-
-.about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.about p{max-width:56ch;margin-bottom:16px}
-.ruled{border-top:3px solid var(--line);padding-top:24px}
-.contact .cta{margin-right:12px}
-.contact .alt{background:transparent;color:var(--ink);box-shadow:none;border:2px solid var(--line)}
-footer{padding:30px 0 44px;color:var(--muted);font-size:15px}
-
-@media (max-width:760px){
-  .tiles,.about{grid-template-columns:1fr}
-  .top{flex-direction:column;align-items:flex-start}
-  .hero .art{right:-30%;opacity:.7}
-  .desk{height:640px}
-}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile:hover .plate{transform:none}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="hero" id="hero">
@@ -128,11 +23,11 @@ footer{padding:30px 0 44px;color:var(--muted);font-size:15px}
   <div class="shade"></div>
   <div class="wrap">
     <div class="top">
-      <a href="#hero"><strong>Your Name</strong></a>
+      <a href="#hero"><strong>Alyssa Heimlicher</strong></a>
       <nav aria-label="Main"><a href="#threed">3D</a><a href="#sketches">Sketches</a><a href="#more">2D and more</a><a href="#about">About</a></nav>
     </div>
     <div class="heroText">
-      <h1 class="name" data-t="Your Name">Your Name</h1>
+      <h1 class="name" data-t="Your Name">Alyssa Heimlicher</h1>
       <p class="role">Game artist drawn to sharks, bugs and things that lurk.</p>
       <a class="cta" href="#threed">See the work</a>
     </div>
@@ -188,66 +83,8 @@ footer{padding:30px 0 44px;color:var(--muted);font-size:15px}
     </div>
   </div></section>
 </main>
-<footer><div class="wrap">Made by Your Name</div></footer>
+<footer><div class="wrap">Made by Alyssa Heimlicher</div></footer>
 
-<script>
-(function(){
-  // flashlight
-  var h=document.getElementById('hero');
-  h.addEventListener('pointermove',function(e){
-    var r=h.getBoundingClientRect();
-    h.style.setProperty('--x',(e.clientX-r.left)+'px');
-    h.style.setProperty('--y',(e.clientY-r.top)+'px');
-  });
-
-  // wireframe reveal
-  var rev=document.getElementById('rev');
-  document.getElementById('wg').innerHTML=document.getElementById('rg').innerHTML;
-  function setW(p){
-    p=Math.max(0,Math.min(100,p));
-    rev.style.setProperty('--w',p+'%');
-    rev.setAttribute('aria-valuenow',Math.round(p));
-  }
-  rev.addEventListener('pointermove',function(e){
-    var r=rev.getBoundingClientRect();
-    setW((e.clientX-r.left)/r.width*100);
-  });
-  rev.addEventListener('keydown',function(e){
-    var v=+rev.getAttribute('aria-valuenow');
-    if(e.key==='ArrowLeft'){setW(v-5);e.preventDefault();}
-    if(e.key==='ArrowRight'){setW(v+5);e.preventDefault();}
-  });
-
-  // draggable sketches
-  var desk=document.getElementById('desk'),z=1;
-  desk.querySelectorAll('.card').forEach(function(c){
-    var ox=0,oy=0;
-    function clamp(v,max){return Math.max(0,Math.min(max,v));}
-    function put(x,y){
-      c.style.left=clamp(x,desk.clientWidth-c.offsetWidth)+'px';
-      c.style.top=clamp(y,desk.clientHeight-c.offsetHeight)+'px';
-    }
-    c.addEventListener('pointerdown',function(e){
-      c.setPointerCapture(e.pointerId);
-      c.classList.add('drag');c.style.zIndex=++z;
-      ox=e.clientX-c.offsetLeft-desk.getBoundingClientRect().left;
-      oy=e.clientY-c.offsetTop-desk.getBoundingClientRect().top;
-    });
-    c.addEventListener('pointermove',function(e){
-      if(!c.classList.contains('drag'))return;
-      var r=desk.getBoundingClientRect();
-      put(e.clientX-r.left-ox,e.clientY-r.top-oy);
-    });
-    function up(){c.classList.remove('drag');}
-    c.addEventListener('pointerup',up);c.addEventListener('pointercancel',up);
-    c.addEventListener('keydown',function(e){
-      var d={ArrowLeft:[-20,0],ArrowRight:[20,0],ArrowUp:[0,-20],ArrowDown:[0,20]}[e.key];
-      if(!d)return;
-      e.preventDefault();c.style.zIndex=++z;
-      put(c.offsetLeft+d[0],c.offsetTop+d[1]);
-    });
-  });
-})();
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
