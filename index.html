@@ -1,143 +1,253 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-<title>FrogHat HQ</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Name, Artist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef0df;--panel:#ffffff;--ink:#12140a;--muted:#565a38;
+  --amber:#a65f00;--ice:#5d6b14;--line:#12140a;
+  --disp:'Syne','Arial Black',system-ui,sans-serif;
+  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12140a;--panel:#232a12;--ink:#ece6d6;--muted:#b3b08f;
+    --amber:#ffb23e;--ice:#c9d36a;--line:#ece6d6;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12140a;--panel:#232a12;--ink:#ece6d6;--muted:#b3b08f;
+  --amber:#ffb23e;--ice:#c9d36a;--line:#ece6d6;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.65 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--disp);font-weight:800;margin:0;line-height:1.05}
+p{margin:0}
+section{padding:80px 0}
+h2{font-size:clamp(30px,5vw,48px);margin-bottom:12px}
+.lead{color:var(--muted);max-width:50ch;margin-bottom:36px}
+
+/* hero: always dark, lit by the pointer */
+.hero{position:relative;overflow:hidden;min-height:92vh;color:#ece6d6;
+  background:radial-gradient(110% 90% at 72% 35%,#3a4318 0,#1d220d 55%,#0b0d05 100%);
+  --x:70%;--y:42%}
+.hero .art{position:absolute;right:-6%;top:14%;width:min(78vw,760px);height:auto}
+.hero .shade{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle 150px at var(--x) var(--y),rgba(255,178,62,.22) 0,rgba(255,178,62,0) 100%),
+  radial-gradient(circle 260px at var(--x) var(--y),rgba(8,9,3,0) 0,rgba(8,9,3,.6) 55%,rgba(8,9,3,.92) 100%)}
+.top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font:600 15px var(--body)}
+.top nav{display:flex;gap:22px;flex-wrap:wrap}
+.top a{text-decoration:none}
+.top a:hover{color:#ffb23e}
+.heroText{position:relative;z-index:2;padding:12vh 0 9vh;max-width:620px}
+.name{font-size:clamp(54px,12vw,132px);letter-spacing:-.03em;position:relative;display:inline-block}
+.name::before,.name::after{content:attr(data-t);position:absolute;inset:0;mix-blend-mode:screen;pointer-events:none}
+.name::before{color:#ffb23e;transform:translate(-5px,3px)}
+.name::after{color:#8fa83a;transform:translate(5px,-3px)}
+.role{margin-top:30px;font-size:21px;max-width:27ch;color:#e8e4cf}
+.cta{display:inline-block;margin-top:30px;padding:13px 22px;font:600 16px var(--body);text-decoration:none;background:#ffb23e;color:#12140a;border-radius:2px;box-shadow:5px 5px 0 #8fa83a}
+.cta:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 #8fa83a}
+.hint{position:absolute;z-index:2;left:22px;bottom:18px;font-size:14px;color:#c3c09f}
+
+/* wireframe reveal */
+.rev{position:relative;aspect-ratio:16/9;overflow:hidden;--w:50%;cursor:ew-resize;touch-action:pan-y;
+  background:linear-gradient(160deg,#232a12,#12140a);border-radius:3px;user-select:none}
+.rev svg{position:absolute;inset:0;width:100%;height:100%}
+.wire{background:#12140a;clip-path:inset(0 calc(100% - var(--w)) 0 0)}
+.wire polygon{fill:none;stroke:#c9d36a;stroke-width:1.6;stroke-linejoin:round}
+.wire .grid{stroke:#c9d36a;stroke-width:.4;opacity:.25}
+.rev .split{position:absolute;top:0;bottom:0;left:var(--w);width:3px;background:#ffb23e;transform:translateX(-1px)}
+.rev .tag{position:absolute;bottom:12px;font:600 13px var(--body);color:#ece6d6;background:rgba(18,20,10,.8);padding:3px 9px;border-radius:2px}
+.rev .t1{left:12px}.rev .t2{right:12px}
+.f1{fill:#6b7a2a}.f2{fill:#4a5620}.f3{fill:#2c3414}.f4{fill:#3d4a1c}.f5{fill:#8c9a3a}.f6{fill:#c98a2e}
+.cap{margin-top:14px;color:var(--muted);max-width:60ch}
+
+/* sketch desk */
+.desk{position:relative;height:520px;overflow:hidden;border-radius:3px;background:var(--panel);
+  background-image:radial-gradient(color-mix(in srgb,var(--ink) 18%,transparent) 1.2px,transparent 1.5px);background-size:22px 22px}
+.card{position:absolute;width:190px;padding:10px 10px 8px;background:#ece6d6;color:#12140a;transform:rotate(var(--r));
+  box-shadow:3px 4px 0 rgba(0,0,0,.35);cursor:grab;touch-action:none;user-select:none;font:600 14px var(--body)}
+.card.drag{cursor:grabbing;box-shadow:8px 10px 0 rgba(0,0,0,.35)}
+.card i{display:block;height:140px;margin-bottom:6px;background:#d9d1bd}
+.d1 i{background:repeating-linear-gradient(125deg,#d9d1bd 0 6px,#12140a 6px 7px)}
+.d2 i{background:radial-gradient(circle at 50% 50%,#12140a 0 28%,transparent 29%),repeating-linear-gradient(0deg,#d9d1bd 0 8px,#b3b08f 8px 9px)}
+.d3 i{background:radial-gradient(#12140a 1.4px,transparent 1.7px) 0 0/8px 8px,#d9d1bd}
+.d4 i{background:conic-gradient(from 20deg,#12140a 0 25%,#d9d1bd 0 50%,#12140a 0 75%,#d9d1bd 0)}
+.d5 i{background:repeating-linear-gradient(80deg,#d9d1bd 0 10px,#3a4318 10px 12px)}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:40px 32px}
+.tile{display:block;text-decoration:none}
+.plate{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:3px;transition:transform .15s}
+.tile:hover .plate,.tile:focus-visible .plate{transform:translateY(-6px) rotate(-.6deg)}
+.plate::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(125deg,transparent 0 6px,rgba(236,230,214,.14) 6px 7px)}
+.p2{background:radial-gradient(circle at 68% 32%,#ffb23e 0 14%,transparent 15%),linear-gradient(180deg,#3d4a1c,#12140a)}
+.p4{background:radial-gradient(ellipse at 50% 50%,rgba(255,178,62,.5),transparent 55%),repeating-linear-gradient(90deg,#3a4318 0 16px,#232a12 16px 32px)}
+.tile h3{font-size:26px;margin:16px 0 6px}
+.tile p{color:var(--muted);max-width:40ch}
+
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.about p{max-width:56ch;margin-bottom:16px}
+.ruled{border-top:3px solid var(--line);padding-top:24px}
+.contact .cta{margin-right:12px}
+.contact .alt{background:transparent;color:var(--ink);box-shadow:none;border:2px solid var(--line)}
+footer{padding:30px 0 44px;color:var(--muted);font-size:15px}
+
+@media (max-width:760px){
+  .tiles,.about{grid-template-columns:1fr}
+  .top{flex-direction:column;align-items:flex-start}
+  .hero .art{right:-30%;opacity:.7}
+  .desk{height:640px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile:hover .plate{transform:none}}
+</style>
 </head>
 <body>
-    
-      
-<div class="header">
-    
-  <h1>Welcome to my page!</h1>
-
-      <div class="parallax"></div>
-  <h3>ʚɞ Please enjoy your stay ʚɞ</h3>
-  
-</div>
-
-<div class="nav-wrapper nav-wrapper-4">
-    <nav class="effect-4">
-        <ul>
-            <li><a href="#watchlist">watchlist</a></li>
-            <li><a href="">About me</a></li>
-            <li><a href="">Portfolio</a></li>
-            <li><a href="">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</div>
-<div class="row">
-  <div class="leftcolumn">
-
-    <div id="watchlist" class="card">
-      <h2>Anime Watchlist</h2>
-        <br>
-        <a href="https://github.com/Ash-broccoli/Watchlist.git" target="_blank"  class="button one">Watchlist repository</a>
-        <p>This wasn't made willingly. It was for school. I still like the results :)</p>
+<header class="hero" id="hero">
+  <svg class="art" viewBox="0 0 600 300" role="img" aria-label="Placeholder shark silhouette">
+    <defs>
+      <pattern id="h" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><line x1="0" y1="0" x2="0" y2="9" stroke="#ece6d6" stroke-width="1.5"/></pattern>
+      <clipPath id="b"><path id="body" d="M20 170C120 110 260 90 380 110L430 40 450 115C500 125 540 140 580 100 570 150 565 170 580 215 540 180 500 190 450 200L420 270 380 205C260 235 120 230 20 170Z"/></clipPath>
+    </defs>
+    <path d="M20 170C120 110 260 90 380 110L430 40 450 115C500 125 540 140 580 100 570 150 565 170 580 215 540 180 500 190 450 200L420 270 380 205C260 235 120 230 20 170Z" fill="#55612a"/>
+    <g clip-path="url(#b)"><rect x="0" y="165" width="600" height="140" fill="#c9d36a" opacity=".55"/><polygon points="0,300 0,150 380,130 470,300" fill="url(#h)" opacity=".55"/></g>
+    <circle cx="105" cy="158" r="7" fill="#ffb23e"/>
+    <g stroke="#12140a" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"><path d="M190 140q10 25 0 50"/><path d="M210 138q10 25 0 52"/><path d="M230 136q10 26 0 54"/></g>
+  </svg>
+  <div class="shade"></div>
+  <div class="wrap">
+    <div class="top">
+      <a href="#hero"><strong>Your Name</strong></a>
+      <nav aria-label="Main"><a href="#threed">3D</a><a href="#sketches">Sketches</a><a href="#more">2D and more</a><a href="#about">About</a></nav>
     </div>
-
-    <div class="card">
+    <div class="heroText">
+      <h1 class="name" data-t="Your Name">Your Name</h1>
+      <p class="role">Game artist drawn to sharks, bugs and things that lurk.</p>
+      <a class="cta" href="#threed">See the work</a>
     </div>
-
-    <div class="card">
-      
-    </div>
-      <div class="card">
-
-      </div>
-      <div class="card">
-
-      </div>
-      <div id="contact" class="card">
-        <h2>Contact me</h2>
-          <p>Please don't</p>
-      </div>
-
-   
   </div>
+  <p class="hint">Move your cursor or finger to move the light.</p>
+</header>
 
-  <div class="rightcolumn">
-    
-
-    <div class="card">
-        <h2>ʚɞ Frog Gallery</h2> 
-     
-      <div class="gallery">
-        <img src="https://i.pinimg.com/originals/ce/09/16/ce09160b7b12254f957ae46f8cd89ba6.jpg" id="frogImage1" width="49%" height="170">
-        <img src="https://i.pinimg.com/564x/a4/5e/4d/a45e4d44aa4c0e8b6f47a748104f8734.jpg" id="frogImage2" width="49%" height="170">
-      </div>
-      <div class="gallery">
-
-      </div>
-      <div class="gallery">
-
-          <img src="https://i.pinimg.com/originals/e8/28/60/e8286019556b6efd38145197bfe39fbf.jpg" id="frogImage3" width="99%" height="auto">
-      </div>
-      <div class="gallery">
-
-          <img src="https://i.pinimg.com/736x/0f/cf/42/0fcf420e7ddd8aafc3755b42ac1eba4f.jpg" id="frogImage4" width="65%" height="159">
-          <img src="https://i.pinimg.com/originals/34/57/8a/34578ad77870d2961c4b29628b3f03d3.png" id="frogImage5" width="33%" height="159">
-      </div>
-      <button onclick="changeGal()">Switch images</button>
+<main>
+  <section id="threed"><div class="wrap">
+    <h2>3D</h2>
+    <p class="lead">Drag across the model to swap between the finished render and its wireframe.</p>
+    <div class="rev" id="rev" tabindex="0" role="slider" aria-label="Render and wireframe comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+      <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet"><g id="rg">
+        <polygon class="f1" points="200,12 287,62 200,112"/><polygon class="f2" points="287,62 287,162 200,112"/><polygon class="f3" points="287,162 200,212 200,112"/>
+        <polygon class="f4" points="200,212 113,162 200,112"/><polygon class="f5" points="113,162 113,62 200,112"/><polygon class="f6" points="113,62 200,12 200,112"/>
+      </g></svg>
+      <svg class="wire" viewBox="0 0 400 225" preserveAspectRatio="xMidYMid meet"><path class="grid" d="M0 56H400M0 112H400M0 168H400M100 0V225M200 0V225M300 0V225"/><g id="wg"></g></svg>
+      <div class="split"></div>
+      <span class="tag t1">Render</span><span class="tag t2">Wireframe</span>
     </div>
+    <p class="cap">Placeholder shape. Swap in a finished render and its wireframe for each piece.</p>
+  </div></section>
 
-    <div class="card">
-        <h2>ʚɞ Recommended Playlist</h2>
-        <iframe src="https://open.spotify.com/embed/playlist/50DeSZFG6BsuzlJzMUV2VA?theme=0"  width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  <section id="sketches"><div class="wrap">
+    <h2>Sketch dump</h2>
+    <p class="lead">A messy desk. Pick up a sketch and move it around.</p>
+    <div class="desk" id="desk">
+      <div class="card d1" tabindex="0" style="--r:-5deg;left:6%;top:8%"><i></i>Shark study</div>
+      <div class="card d2" tabindex="0" style="--r:4deg;left:30%;top:36%"><i></i>Beetle shell</div>
+      <div class="card d3" tabindex="0" style="--r:-2deg;left:56%;top:6%"><i></i>Light test</div>
+      <div class="card d4" tabindex="0" style="--r:6deg;left:72%;top:42%"><i></i>Creature head</div>
+      <div class="card d5" tabindex="0" style="--r:-7deg;left:14%;top:52%"><i></i>Spider legs</div>
     </div>
+  </div></section>
 
-    <div class="card">
-        <h2>ʚɞ Frog facts</h2>
-            <h3 id="facts">Press for a frog fact</h3>
-      <button onclick="frogFact()">Random frog fact</button>
-     </div>
-  </div>
+  <section id="more"><div class="wrap">
+    <h2>2D and more</h2>
+    <p class="lead">Illustration, concept paintings and experiments.</p>
+    <div class="tiles">
+      <a class="tile" href="#"><div class="plate p2" role="img" aria-label="Placeholder for 2D work"></div><h3>2D</h3><p>Illustrations and concept paintings.</p></a>
+      <a class="tile" href="#"><div class="plate p4" role="img" aria-label="Placeholder for extra work"></div><h3>More</h3><p>Pixel art, game jam work and experiments.</p></a>
     </div>
+  </div></section>
 
-<div class="footer">
-  <h2>&hearts; Make sure to drink enough water &hearts;</h2>
-</div>
-
+  <section id="about"><div class="wrap">
+    <div class="about">
+      <h2>About</h2>
+      <div class="ruled">
+        <p>I’m a Game Arts student at SAE, and the artist on my team’s first-semester project.</p>
+        <p>Write your own paragraph here: what you love drawing, what you’re learning, and what you want to make next.</p>
+        <div class="contact"><a class="cta" href="mailto:hello@example.com">Send an email</a><a class="cta alt" href="#">ArtStation</a></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+<footer><div class="wrap">Made by Your Name</div></footer>
 
 <script>
+(function(){
+  // flashlight
+  var h=document.getElementById('hero');
+  h.addEventListener('pointermove',function(e){
+    var r=h.getBoundingClientRect();
+    h.style.setProperty('--x',(e.clientX-r.left)+'px');
+    h.style.setProperty('--y',(e.clientY-r.top)+'px');
+  });
 
-    let imgToggle = true;
-    function changeGal() {
-        
-        if(imgToggle){
-            document.getElementById('frogImage1').src = "https://i.pinimg.com/originals/4f/6f/84/4f6f8438232d510e51e9f3f81ef265fb.jpg";
-            document.getElementById('frogImage2').src = "https://i.pinimg.com/originals/a3/89/69/a389694daa51e5ddf5c808ff34032e23.jpg";
-            document.getElementById('frogImage3').src = "https://i.pinimg.com/originals/c0/1a/93/c01a932a8704e384996f35bc8c1a9cb2.png";
-            document.getElementById('frogImage4').src = "https://i.pinimg.com/736x/ea/64/9b/ea649b4a5df90225dddc69550b9ef57b.jpg";
-            document.getElementById('frogImage5').src = "https://i.pinimg.com/originals/98/97/7a/98977afb04d7f5e2113043a726b1b443.png";
-            imgToggle = !imgToggle;
-        }else{
-            document.getElementById('frogImage1').src = "https://i.pinimg.com/originals/ce/09/16/ce09160b7b12254f957ae46f8cd89ba6.jpg";
-            document.getElementById('frogImage2').src = "https://i.pinimg.com/564x/a4/5e/4d/a45e4d44aa4c0e8b6f47a748104f8734.jpg";
-            document.getElementById('frogImage3').src = "https://i.pinimg.com/originals/e8/28/60/e8286019556b6efd38145197bfe39fbf.jpg";
-            document.getElementById('frogImage4').src = "https://i.pinimg.com/736x/0f/cf/42/0fcf420e7ddd8aafc3755b42ac1eba4f.jpg";
-            document.getElementById('frogImage5').src = "https://i.pinimg.com/originals/34/57/8a/34578ad77870d2961c4b29628b3f03d3.png";
-            imgToggle = !imgToggle;
-        }
-        }
+  // wireframe reveal
+  var rev=document.getElementById('rev');
+  document.getElementById('wg').innerHTML=document.getElementById('rg').innerHTML;
+  function setW(p){
+    p=Math.max(0,Math.min(100,p));
+    rev.style.setProperty('--w',p+'%');
+    rev.setAttribute('aria-valuenow',Math.round(p));
+  }
+  rev.addEventListener('pointermove',function(e){
+    var r=rev.getBoundingClientRect();
+    setW((e.clientX-r.left)/r.width*100);
+  });
+  rev.addEventListener('keydown',function(e){
+    var v=+rev.getAttribute('aria-valuenow');
+    if(e.key==='ArrowLeft'){setW(v-5);e.preventDefault();}
+    if(e.key==='ArrowRight'){setW(v+5);e.preventDefault();}
+  });
 
-        function frogFact(){
-            var facts  = ["There is evidence that frogs have roamed the Earth for more than 200 million years, at least as long as the dinosaurs", 
-                        "The world's largest frog is the goliath frog of West Africa—it can grow to 15 inches and weigh up to 7 pounds. A goliath frog skeleton is featured in Frogs: A Chorus of Colors.",
-                        "One of the smallest is the Cuban tree toad, which grows to half an inch long.",
-                        "While the life spans of frogs in the wild are unknown, frogs in captivity have been known to live more than 20 years.",
-                        "There are over 6,000 species of frogs worldwide. Scientists continue to search for new ones.",
-                        "Toads are frogs. The word \"toad\" is usually used for frogs that have warty and dry skin, as well as shorter hind legs.",
-                        "Launched by their long legs, many frogs can leap more than 20 times their body length.",
-                        "The Costa Rican flying tree frog soars from branch to branch with the help of its feet. Webbing between the frog's fingers and toes extends out, helping the frog glide.",
-                        "To blend into the environment, the Budgett's frog is muddy brown in color, while the Vietnamese mossy frog has spotty skin and bumps to make them look like little clumps of moss or lichen.",
-                        "Like all amphibians, frogs are cold-blooded, meaning their body temperatures change with the temperature of their surroundings. When temperatures drop, some frogs dig burrows underground or in the mud at the bottom of ponds. They hibernate in these burrows until spring, completely still and scarcely breathing.",
-    ]
-            var randomFact = facts[Math.floor(Math.random() * facts.length)]
-                       document.getElementById("facts").innerHTML = randomFact;
-        }
-        
-    </script>
+  // draggable sketches
+  var desk=document.getElementById('desk'),z=1;
+  desk.querySelectorAll('.card').forEach(function(c){
+    var ox=0,oy=0;
+    function clamp(v,max){return Math.max(0,Math.min(max,v));}
+    function put(x,y){
+      c.style.left=clamp(x,desk.clientWidth-c.offsetWidth)+'px';
+      c.style.top=clamp(y,desk.clientHeight-c.offsetHeight)+'px';
+    }
+    c.addEventListener('pointerdown',function(e){
+      c.setPointerCapture(e.pointerId);
+      c.classList.add('drag');c.style.zIndex=++z;
+      ox=e.clientX-c.offsetLeft-desk.getBoundingClientRect().left;
+      oy=e.clientY-c.offsetTop-desk.getBoundingClientRect().top;
+    });
+    c.addEventListener('pointermove',function(e){
+      if(!c.classList.contains('drag'))return;
+      var r=desk.getBoundingClientRect();
+      put(e.clientX-r.left-ox,e.clientY-r.top-oy);
+    });
+    function up(){c.classList.remove('drag');}
+    c.addEventListener('pointerup',up);c.addEventListener('pointercancel',up);
+    c.addEventListener('keydown',function(e){
+      var d={ArrowLeft:[-20,0],ArrowRight:[20,0],ArrowUp:[0,-20],ArrowDown:[0,20]}[e.key];
+      if(!d)return;
+      e.preventDefault();c.style.zIndex=++z;
+      put(c.offsetLeft+d[0],c.offsetTop+d[1]);
+    });
+  });
+})();
+</script>
 </body>
 </html>
