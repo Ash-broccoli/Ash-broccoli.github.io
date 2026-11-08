@@ -77,6 +77,31 @@ h2{font-size:clamp(30px,5vw,48px);margin-bottom:12px}
 .d4 i{background:conic-gradient(from 20deg,#12140a 0 25%,#d9d1bd 0 50%,#12140a 0 75%,#d9d1bd 0)}
 .d5 i{background:repeating-linear-gradient(80deg,#d9d1bd 0 10px,#3a4318 10px 12px)}
 
+/* sketch viewer */
+#lightbox{border:0;padding:20px;margin:0;inset:0;width:100%;height:100%;max-width:none;max-height:none;background:transparent;color:#ece6d6}
+#lightbox[open]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+#lightbox::backdrop{background:rgba(18,20,10,.92)}
+.stage{width:min(88vw,720px,72vh);aspect-ratio:1/1;padding:14px;background:#ece6d6;transform:rotate(-1deg);box-shadow:8px 10px 0 rgba(0,0,0,.4)}
+.stage i{display:block;width:100%;height:100%}
+.stage img{display:block;width:100%;height:100%;object-fit:contain}
+#lbCap{font:600 18px var(--body);text-align:center}
+#lightbox .close{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:16px;padding:10px 18px;border:0;border-radius:2px;background:#ffb23e;color:#12140a;font:600 16px var(--body);cursor:pointer;box-shadow:4px 4px 0 #8fa83a}
+#lightbox{touch-action:pan-y}
+#lightbox[open]::backdrop{animation:lbFade .25s ease-out}
+@keyframes lbFade{from{opacity:0}}
+#lbCount{margin-top:-8px;font-size:14px;color:#b3b08f}
+.nav{position:absolute;top:50%;width:52px;height:52px;margin-top:-26px;border:0;border-radius:2px;background:#ece6d6;color:#12140a;font:800 30px/1 var(--disp);cursor:pointer;box-shadow:4px 4px 0 #8fa83a}
+.nav:hover{background:#ffb23e}
+.prev{left:max(14px,env(safe-area-inset-left,0px))}
+.next{right:max(14px,env(safe-area-inset-right,0px))}
+@media (max-width:760px){
+  .nav{top:auto;margin-top:0;bottom:calc(22px + env(safe-area-inset-bottom,0px));width:48px;height:48px}
+  .prev{left:22px}.next{right:22px}
+}
+@media (prefers-reduced-motion:reduce){#lightbox[open]::backdrop{animation:none}}
+.card{cursor:pointer}
+.card.drag{cursor:grabbing}
+
 /* tiles */
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:40px 32px}
 .tile{display:block;text-decoration:none}

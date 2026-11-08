@@ -27,7 +27,7 @@
       <nav aria-label="Main"><a href="#threed">3D</a><a href="#sketches">Sketches</a><a href="#more">2D and more</a><a href="#about">About</a></nav>
     </div>
     <div class="heroText">
-      <h1 class="name" data-t="Your Name">Alyssa Heimlicher</h1>
+      <h1 class="name" data-t="Alyssa Heimlicher">Alyssa Heimlicher</h1>
       <p class="role">Game artist drawn to sharks, bugs and things that lurk.</p>
       <a class="cta" href="#threed">See the work</a>
     </div>
@@ -53,7 +53,7 @@
 
   <section id="sketches"><div class="wrap">
     <h2>Sketch dump</h2>
-    <p class="lead">A messy desk. Pick up a sketch and move it around.</p>
+    <p class="lead">A messy desk. Pick up a sketch and move it around. Click one to open it.</p>
     <div class="desk" id="desk">
       <div class="card d1" tabindex="0" style="--r:-5deg;left:6%;top:8%"><i></i>Shark study</div>
       <div class="card d2" tabindex="0" style="--r:4deg;left:30%;top:36%"><i></i>Beetle shell</div>
@@ -84,6 +84,15 @@
   </div></section>
 </main>
 <footer><div class="wrap">Made by Alyssa Heimlicher</div></footer>
+
+<dialog id="lightbox" aria-label="Sketch viewer">
+  <button class="close" type="button">Close</button>
+  <button class="nav prev" type="button" aria-label="Previous sketch">&#8249;</button>
+  <div class="stage" id="lbStage"></div>
+  <p id="lbCap"></p>
+  <p id="lbCount"></p>
+  <button class="nav next" type="button" aria-label="Next sketch">&#8250;</button>
+</dialog>
 
 <script src="script.js" defer></script>
 </body>
